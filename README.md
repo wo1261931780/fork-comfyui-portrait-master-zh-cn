@@ -1,6 +1,120 @@
-# ComfyUI Portrait Master 简体中文版
+# 🎨 fork-comfyui-portrait-master-zh-cn - ComfyUI肖像提示词生成器(中文版)
 
-![Dingtalk_20231218164020](https://github.com/ZHO-ZHO-ZHO/comfyui-portrait-master-zh-cn/assets/140084057/38d305cb-64f3-4dcf-a389-5ad3f84be7b3)
+![ComfyUI](https://img.shields.io/badge/ComfyUI-Stable%20Diffusion-orange)
+![License](https://img.shields.io/badge/License-GPL%20v3-blue)
+
+## 📖 项目简介
+
+fork-comfyui-portrait-master-zh-cn是ComfyUI的肖像提示词生成器简体中文版,用于快速生成高质量的人像摄影提示词,支持镜头类型、人物特征、灯光效果等多种参数配置。
+
+## 📦 项目来源
+
+- **原项目**: [ZHO-ZHO-ZHO/comfyui-portrait-master-zh-cn](https://github.com/ZHO-ZHO-ZHO/comfyui-portrait-master-zh-cn)
+- **原作者**: ZHO-ZHO-ZHO
+- **开源协议**: GNU General Public License v3.0 (GPL-3.0)
+- **Fork时间**: 2024年
+
+## 🔧 二次开发内容
+
+本项目为原项目的本地备份,未进行实质性修改,主要用于:
+- 学习Stable Diffusion的提示词工程
+- 研究AI图像生成的参数优化
+- 了解ComfyUI工作流的设计方法
+
+## 提示词生成架构 | Prompt Generation Architecture
+
+```mermaid
+graph TB
+    subgraph Input["🎨 用户输入"]
+        A[镜头类型选择] --> N[参数组装器]
+        B[性别与国籍] --> N
+        C[年龄设置] --> N
+        D[眼睛颜色] --> N
+        E[面部表情] --> N
+        F[脸型选择] --> N
+        G[发型与发色] --> N
+    end
+    
+    subgraph Process["⚙️ 提示词合成"]
+        N --> O[提示词构建器]
+        O --> P[按顺序合成]
+        P --> Q1[起始提示词]
+        Q1 --> Q2[镜头类型+权重]
+        Q2 --> Q3[人物特征]
+        Q3 --> Q4[表情与脸型]
+        Q4 --> Q5[发型与发色]
+        Q5 --> Q6[灯光设置]
+        Q6 --> Q7[结束提示词]
+    end
+    
+    subgraph Output["📤 输出结果"]
+        Q7 --> R[正向提示词]
+        Q7 --> S[负面提示词]
+        R --> T[SD1.5/SDXL]
+        S --> T
+        T --> U[AI图像生成]
+    end
+    
+    style A fill:#e1f5ff
+    style N fill:#fff9c4
+    style R fill:#c8e6c9
+    style U fill:#c8e6c9
+```
+
+## 参数层级关系 | Parameter Hierarchy
+
+```mermaid
+mindmap
+  root((肖像提示词<br/>生成器))
+    镜头设置
+      头像特写
+      肩部肖像
+      半身像
+      全身像
+      脸部肖像
+      镜头权重调节
+    人物特征
+      性别
+        男性
+        女性
+      国籍
+        193国家可选
+        支持混合国籍
+      年龄
+        自由设定
+      眼睛
+        8种颜色
+        虹膜细节
+        圆形瞳孔
+    面部细节
+      表情
+        24种表情
+        表情权重
+      脸型
+        12种脸型
+      皮肤
+        皮肤细节
+        毛孔设置
+        瑕疵控制
+        雀斑/酒窝/痣
+    发型设置
+      发型
+        20种发型
+      发色
+        9种颜色
+      蓬松度
+    灯光系统
+      灯光类型
+        32种灯光
+      灯光方向
+        10个方向
+    扩展功能
+      自定义提示词
+        起始提示词
+        补充提示词
+        结束提示词
+      真实感增强
+      负面提示词
 
 
 ## 项目介绍 | Info
